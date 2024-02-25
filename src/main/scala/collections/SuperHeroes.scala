@@ -4,36 +4,26 @@ import scala.collection.mutable
 
 object SuperHeroes {
   def main(args: Array[String]): Unit = {
-    val avengers = Map("Iron Man" -> 12, "Black Widow" -> 18, "Captain America" -> 8, "Scarlet Witch" -> 10)
+    val numbers = Set(1,2,3,4,5)
 
-    val scarletWitch = avengers("Scarlet Witch")
+//    numbers.foreach(println)
 
-    val ironMan = avengers.getOrElse("iron Man", 0)
-//    println(avengers.keys)
-//    println(avengers.values)
+    val orderedSet = mutable.LinkedHashSet(10, 11, 12, 13, 14)
 
-//    for((key, value) <- avengers) println(key + " : " + value)
+//    orderedSet.foreach(println)
+    val nums = mutable.Set(4, 5, 10, 12, 13)
 
-//    for (value <- avengers.values) println(value)
+    nums += 4
+    nums -= 5
 
-    val mutableAvengers = mutable.Map("Iron Man" -> 12, "Black Widow" -> 18, "Captain America" -> 8, "Scarlet Witch" -> 10)
+    nums.foreach(println)
 
-    mutableAvengers("Iron Man") = 9
+    val unionResult = numbers.union(nums)
+    val intersectResult = numbers.intersect(nums)
 
-    mutableAvengers("Hawkeye") = 19
-
-    mutableAvengers -= "Captain America"
-
-//    mutableAvengers.foreach(println)
-
-    val hawkEye = ("Clint", "Waverly, Iowa", 'M')
-
-    val hawkName = hawkEye._1
-    val hawkBirthPlace = hawkEye._2
-
-    println(hawkName)
-    println(hawkBirthPlace)
-
-    hawkEye.productIterator.foreach(println)
+    println(unionResult)
+    println(intersectResult)
+    
+    
   }
 }
