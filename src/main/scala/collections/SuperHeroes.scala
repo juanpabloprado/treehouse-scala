@@ -1,42 +1,37 @@
 package collections
 
-import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.ListBuffer
 
 object SuperHeroes {
   def main(args: Array[String]): Unit = {
-    val numbers = new Array[Int](10)
+    val immutableHeroes = List("Wonder Woman", "Thor", "SuperMan", "Batman")
+    val numbers = 1::2::3::Nil
+    println(immutableHeroes.head)
+    println(immutableHeroes.tail)
 
-    val words = new Array[String](10)
+    val readableHeroes = immutableHeroes.mkString(" | ")
 
-    val heroes = Array("Wonder Woman", "Thor", "Superman", "Batman")
+    val prettifyHeroes = immutableHeroes.mkString("[", ", ", "]")
 
-//    println(heroes(3))
+    println(prettifyHeroes)
 
-    val mutableHeroes = ArrayBuffer("Wonder Woman", "Thor", "Superman", "Batman")
+    val mutableHeroes = ListBuffer("Wonder Woman", "Thor", "SuperMan", "Batman")
 
-    mutableHeroes += "Iron Man"
+    mutableHeroes += "Raven"
 
-    val otherHeroes = Array("Spider-Man", "Hulk", "Starfire", "Green Arrow")
+    "Captain America" +=: mutableHeroes
 
-    mutableHeroes ++= otherHeroes
-//    println(mutableHeroes)
+//    mutableHeroes.foreach(println)
 
-    mutableHeroes.dropRightInPlace(2)
+    val captainAmerica = mutableHeroes.head
 
-    mutableHeroes.update(1, "Flash")
+    mutableHeroes(2) = "Iron Man"
+//    mutableHeroes.foreach(println)
 
-//    println(mutableHeroes)
+    mutableHeroes -= "Batman"
 
-    for (elem <- mutableHeroes) println(elem)
+    mutableHeroes.remove(0)
 
-//    for (i <- 1 until 10) println(i)
-
-    for (i <- 1 to 10) println(i)
-
-    for (elem <- mutableHeroes.indices) println(elem + " " + mutableHeroes(elem))
-
-    val dashHeroes = for (elem <- mutableHeroes if elem.contains("-")) yield elem
-
-    dashHeroes.foreach(println)
+    mutableHeroes.foreach(println)
   }
 }
