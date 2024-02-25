@@ -1,37 +1,39 @@
 package collections
 
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable
 
 object SuperHeroes {
   def main(args: Array[String]): Unit = {
-    val immutableHeroes = List("Wonder Woman", "Thor", "SuperMan", "Batman")
-    val numbers = 1::2::3::Nil
-    println(immutableHeroes.head)
-    println(immutableHeroes.tail)
+    val avengers = Map("Iron Man" -> 12, "Black Widow" -> 18, "Captain America" -> 8, "Scarlet Witch" -> 10)
 
-    val readableHeroes = immutableHeroes.mkString(" | ")
+    val scarletWitch = avengers("Scarlet Witch")
 
-    val prettifyHeroes = immutableHeroes.mkString("[", ", ", "]")
+    val ironMan = avengers.getOrElse("iron Man", 0)
+//    println(avengers.keys)
+//    println(avengers.values)
 
-    println(prettifyHeroes)
+//    for((key, value) <- avengers) println(key + " : " + value)
 
-    val mutableHeroes = ListBuffer("Wonder Woman", "Thor", "SuperMan", "Batman")
+//    for (value <- avengers.values) println(value)
 
-    mutableHeroes += "Raven"
+    val mutableAvengers = mutable.Map("Iron Man" -> 12, "Black Widow" -> 18, "Captain America" -> 8, "Scarlet Witch" -> 10)
 
-    "Captain America" +=: mutableHeroes
+    mutableAvengers("Iron Man") = 9
 
-//    mutableHeroes.foreach(println)
+    mutableAvengers("Hawkeye") = 19
 
-    val captainAmerica = mutableHeroes.head
+    mutableAvengers -= "Captain America"
 
-    mutableHeroes(2) = "Iron Man"
-//    mutableHeroes.foreach(println)
+//    mutableAvengers.foreach(println)
 
-    mutableHeroes -= "Batman"
+    val hawkEye = ("Clint", "Waverly, Iowa", 'M')
 
-    mutableHeroes.remove(0)
+    val hawkName = hawkEye._1
+    val hawkBirthPlace = hawkEye._2
 
-    mutableHeroes.foreach(println)
+    println(hawkName)
+    println(hawkBirthPlace)
+
+    hawkEye.productIterator.foreach(println)
   }
 }
